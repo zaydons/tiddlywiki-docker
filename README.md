@@ -56,3 +56,12 @@ If you are in a memory-constrained environment, you can provide the
 
 Set the `DEBUG_LEVEL` environment variable to `debug`. For example by passing
 `-e DEBUG_LEVEL=debug` option in `docker run`.
+
+### Path prefix
+
+Set the `PATH_PREFIX` environment variable to customize the path prefix for
+serving TiddlyWiki. For example by passing `-e PATH_PREFIX=\wiki` option in
+`docker run`. According to this [note][path-prefix-note], please remember to
+configure the client as well.
+
+[path-prefix-note]: https://tiddlywiki.com/static/Using%2520a%2520custom%2520path%2520prefix%2520with%2520the%2520client-server%2520edition.html
