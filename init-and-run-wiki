@@ -28,4 +28,4 @@ if [ -n "$USERNAME" ]; then
 fi
 
 # Start the tiddlywiki server
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen $listen_params
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen $listen_params $EXTRAOPTIONS
