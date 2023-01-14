@@ -65,3 +65,42 @@ serving TiddlyWiki. For example by passing `-e PATH_PREFIX=\wiki` option in
 configure the client as well.
 
 [path-prefix-note]: https://tiddlywiki.com/static/Using%2520a%2520custom%2520path%2520prefix%2520with%2520the%2520client-server%2520edition.html
+
+## Docker Compose
+
+To keep all the docker settings, environment variables and volume data in a folder you can use `docker compose`.
+
+Create a folder for the project:
+
+```
+mkdir my-tiddlywiki-docker
+cd my-tiddlywiki-docker
+```
+
+Create a folder for the data:
+
+```
+mkdir tiddlywiki
+```
+
+Create `docker-compose.yml` with the following contents:
+
+```
+version: '3'
+services:
+  tiddlywiki:
+    image: m0wer/tiddlywiki
+    volumes:
+      - ./tiddlywiki:/var/lib/tiddlywiki
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    #environment:
+    #  - DEBUG_LEVEL=debug
+    #  - PATH_PREFIX=\wiki
+    #  - NODE_MEM=128
+    #  - USERNAME=test
+    #  - PASSWORD=test
+```
+
+Then run `docker compose up -d`.
