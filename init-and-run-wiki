@@ -16,6 +16,11 @@ if [ ! -d /var/lib/tiddlywiki/mywiki ]; then
   mkdir /var/lib/tiddlywiki/mywiki/tiddlers
 fi
 
+# Define plugins, see https://tiddlywiki.com/static/Using%2520TiddlyWiki%2520on%2520Node.js.html
+if [  -n "$PLUGINS" ]; then
+  plugins_params="$PLUGINS"
+fi
+
 # Configure listen command, see https://tiddlywiki.com/static/ListenCommand.html
 listen_params="host=0.0.0.0 port=8080"
 listen_params="$listen_params debug-level=${DEBUG_LEVEL-none}"
@@ -28,4 +33,4 @@ if [ -n "$USERNAME" ]; then
 fi
 
 # Start the tiddlywiki server
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen $listen_params
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $plugins_params mywiki --listen $listen_params
